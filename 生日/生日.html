@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #envelope {
+            width: 1000px;
+            height: 800px;
+            background-color: #a59f81;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        #letter {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            transform: translateY(100%);
+            transition: transform 1s;
+            display: none;
+        }
+
+        #letter.active {
+            transform: translateY(0);
+            display: block;
+        }
+
+        #letter-content {
+            margin: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid rgb(13, 44, 183);
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: rgb(8, 178, 245); }
+        }
+    </style>
+</head>
+<body>
+    <div id="envelope">
+        點一下
+        <div id="letter">
+            <div id="letter-content">祝你生日快樂！ 年年有餘 萬事如意 在新的一歲 平平安安 健康快樂 掰掰!!</div>
+               </div>
+    </div>
+
+    <script>
+        document.getElementById('envelope').addEventListener('click', function() {
+            this.childNodes[0].nodeValue = '';
+            document.getElementById('letter').classList.add('active');
+        });
+    </script>
+</body>
+</html>
